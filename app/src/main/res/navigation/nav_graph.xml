@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.lutemon.fragments.Home"
+        android:label="Home">
+        <action
+            android:id="@+id/action_home_to_createNewLutemon"
+            app:destination="@id/createNewLutemonFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createNewLutemonFragment"
+        android:name="com.example.lutemon.fragments.CreateLutemon"
+        android:label="Create" />
+    <fragment
+        android:id="@+id/battleFragment"
+        android:name="com.example.lutemon.fragments.Battle"
+        android:label="Battle">
+        <action
+            android:id="@+id/action_battle_to_battleField"
+            app:destination="@+id/battleFieldFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/battleFieldFragment"
+        android:name="com.example.lutemon.fragments.BattleField"
+        android:label="Battle"/>
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="com.example.lutemon.fragments.Training"
+        android:label="Training" />
+    <fragment
+        android:id="@+id/lutemonlessFragment"
+        android:name="com.example.lutemon.fragments.Lutemonless"
+        android:label="No Lutemons? :("/>
+</navigation>

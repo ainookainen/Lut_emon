@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Battle"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp">
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/jonquil"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="5dp"
+        android:drawableLeft="@drawable/baseline_info_24"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="Choose two Lutemons that will battle to the death :D" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Choose your two Lutemons:"
+        android:layout_marginBottom="5dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVBattle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/BattleButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="To the battle!"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:title="Lutemons"
+    android:id="@+id/home"
+    android:icon="@drawable/space_invaders"
+    app:showAsAction="always"/>
+    <item
+        android:title="Training"
+        android:id="@+id/training"
+        android:icon="@drawable/dumbbell"
+        app:showAsAction="always"/>
+    <item
+        android:title="Battle"
+        android:id="@+id/battle"
+        android:icon="@drawable/sword_cross"
+        app:showAsAction="always"/>
+</menu>

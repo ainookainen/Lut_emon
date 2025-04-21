@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="sea_green">#00916E</color>
+    <color name="linen">#FEEFE5</color>
+    <color name="jonquil">#FFCF00</color>
+    <color name="persimmon">#EE6123</color>
+    <color name="red_munsell">#FA003F</color>
+</resources>

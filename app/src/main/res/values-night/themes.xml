@@ -1,0 +1,14 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Lutemon" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name = "colorPrimary">@color/persimmon</item>
+        <item name="colorPrimaryVariant">@color/red_munsell</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/sea_green</item>
+        <item name = "colorSecondaryVariant">@color/jonquil</item>
+        <item name = "colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/sea_green</item>
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+</resources>

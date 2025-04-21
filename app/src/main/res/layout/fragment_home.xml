@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:id="@+id/HomeFragment"
+    tools:context=".fragments.Home">
+
+    <Button
+        android:id="@+id/CreateNewLutemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create a new Lutemon"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/sea_green"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVLutemons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp" />
+
+</LinearLayout>
