@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lutemon.R;
-import com.example.lutemon.classes.Lutemon;
-import com.example.lutemon.classes.LutemonStorage;
+import com.example.lutemon.lutemons.Lutemon;
+import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.FragmentBattleFieldBinding;
 
 import org.jetbrains.annotations.Nullable;

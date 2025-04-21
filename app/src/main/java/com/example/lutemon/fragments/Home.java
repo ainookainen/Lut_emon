@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lutemon.R;
 import com.example.lutemon.RVAdapterHome;
-import com.example.lutemon.classes.Lutemon;
-import com.example.lutemon.classes.LutemonStorage;
+import com.example.lutemon.lutemons.Lutemon;
+import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.FragmentHomeBinding;
 
 import org.jetbrains.annotations.Nullable;

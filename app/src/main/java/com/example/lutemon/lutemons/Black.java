@@ -1,4 +1,4 @@
-package com.example.lutemon.classes;
+package com.example.lutemon.lutemons;
 
 import com.example.lutemon.R;
 

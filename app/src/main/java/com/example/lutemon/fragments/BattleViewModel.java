@@ -3,7 +3,7 @@ package com.example.lutemon.fragments;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.lutemon.classes.Lutemon;
+import com.example.lutemon.lutemons.Lutemon;
 
 import java.util.ArrayList;
 

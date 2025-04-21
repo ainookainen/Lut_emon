@@ -15,7 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.lutemon.classes.LutemonStorage;
+import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

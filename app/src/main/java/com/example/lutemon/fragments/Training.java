@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lutemon.RVAdapterTraining;
-import com.example.lutemon.classes.Lutemon;
-import com.example.lutemon.classes.LutemonStorage;
+import com.example.lutemon.lutemons.Lutemon;
+import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.FragmentTrainingBinding;
 import com.google.android.material.snackbar.Snackbar;
 

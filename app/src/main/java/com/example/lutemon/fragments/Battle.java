@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lutemon.R;
 import com.example.lutemon.RVAdapterBattle;
-import com.example.lutemon.classes.Lutemon;
-import com.example.lutemon.classes.LutemonStorage;
+import com.example.lutemon.lutemons.Lutemon;
+import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.FragmentBattleBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -46,7 +46,6 @@ public class Battle extends Fragment {
         binding.BattleButton.setOnClickListener(v -> {
             ArrayList<Lutemon> fighters = adapter.getFighters();
             if (fighters.size() == 2) {
-                // TODO: 19.4.2025 Battle :)
                 Snackbar.make(view, "Ready to battle!", Snackbar.LENGTH_SHORT).show();
                 viewModel.setFighters(fighters);
                 Navigation.findNavController(v).navigate(R.id.action_battle_to_battleField);

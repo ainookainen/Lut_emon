@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.lutemon.R;
-import com.example.lutemon.classes.LutemonStorage;
+import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.FragmentCreateLutemonBinding;
 
 import org.jetbrains.annotations.Nullable;
