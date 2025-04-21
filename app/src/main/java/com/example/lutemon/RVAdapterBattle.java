@@ -37,6 +37,7 @@ public class RVAdapterBattle extends RecyclerView.Adapter<RVAdapterBattle.ViewHo
         }
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item

@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.lutemon.R;
-import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.FragmentCreateLutemonBinding;
+import com.example.lutemon.lutemons.LutemonStorage;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -33,9 +33,7 @@ public class CreateLutemon extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.CreateLutemonButton.setOnClickListener(v -> {
-            createLutemon(v);
-        });
+        binding.CreateLutemonButton.setOnClickListener(this::createLutemon);
         setUpRadioButtons();
     }
 

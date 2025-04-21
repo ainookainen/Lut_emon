@@ -1,5 +1,6 @@
 package com.example.lutemon;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -15,8 +17,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.lutemon.lutemons.LutemonStorage;
 import com.example.lutemon.databinding.ActivityMainBinding;
+import com.example.lutemon.lutemons.LutemonStorage;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -26,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         lutemonStorage = LutemonStorage.getInstance();
         EdgeToEdge.enable(this);
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
         setSupportActionBar(binding.toolbar);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        assert navHostFragment != null;
         navController = navHostFragment.getNavController();
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.trainingFragment, R.id.battleFragment).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

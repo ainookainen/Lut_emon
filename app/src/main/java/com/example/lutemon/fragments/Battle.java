@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lutemon.R;
 import com.example.lutemon.RVAdapterBattle;
+import com.example.lutemon.databinding.FragmentBattleBinding;
 import com.example.lutemon.lutemons.Lutemon;
 import com.example.lutemon.lutemons.LutemonStorage;
-import com.example.lutemon.databinding.FragmentBattleBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +30,7 @@ public class Battle extends Fragment {
     private BattleViewModel viewModel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBattleBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }

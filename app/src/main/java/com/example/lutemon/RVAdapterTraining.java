@@ -21,7 +21,7 @@ public class RVAdapterTraining extends RecyclerView.Adapter<RVAdapterTraining.Vi
 
     public RVAdapterTraining(HashMap<Integer, Lutemon> map) {
         this.map = map;
-        this.lutemons = new ArrayList<Lutemon>(map.values());
+        this.lutemons = new ArrayList<>(map.values());
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -37,6 +37,7 @@ public class RVAdapterTraining extends RecyclerView.Adapter<RVAdapterTraining.Vi
         }
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item

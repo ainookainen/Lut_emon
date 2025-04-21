@@ -27,10 +27,9 @@ public abstract class Lutemon {
         return this.attack + this.experience + (int) (Math.random() * 3);
     }
 
-    public int defendAgainst(Lutemon attacker) {
+    public void defendAgainst(Lutemon attacker) {
         int damage = attacker.attack() - this.defense;
         this.health -= damage;
-        return damage;
     }
 
     public void heal() {
@@ -39,7 +38,6 @@ public abstract class Lutemon {
 
     public void train() {
         experience++;
-        attack++;
     }
 
     public int getAttack() {

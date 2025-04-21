@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lutemon.R;
+import com.example.lutemon.databinding.FragmentBattleFieldBinding;
 import com.example.lutemon.lutemons.Lutemon;
 import com.example.lutemon.lutemons.LutemonStorage;
-import com.example.lutemon.databinding.FragmentBattleFieldBinding;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -29,7 +29,7 @@ public class BattleField extends Fragment {
     private int logNr = 1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBattleFieldBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -49,12 +49,7 @@ public class BattleField extends Fragment {
     }
 
     public void battle() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                battleTurn();
-            }
-        }, 3000);
+        handler.postDelayed(this::battleTurn, 2000);
     }
 
     public void battleTurn() {
@@ -65,7 +60,7 @@ public class BattleField extends Fragment {
                 attacker.getDefense() + "; exp: " + attacker.getExperience() + "; health: " + attacker.getHealth() + "/" + attacker.getMaxHealth() + "\n");
         binding.BattleLog.append(3-logNr + ": " + defender.getName() + " (" + defender.getColor() + ") att: " + defender.getAttack() + "; def: " +
                 defender.getDefense() + "; exp: " + defender.getExperience() + "; health: " + defender.getHealth() + "/" + defender.getMaxHealth() + "\n");
-        int damage = defender.defendAgainst(attacker);
+        defender.defendAgainst(attacker);
         binding.BattleLog.append(attacker.getName() + " (" + attacker.getColor() + ") attacks " + defender.getName() + " (" + defender.getColor() + ")!\n");
         if (defender.getHealth() <= 0) {
             binding.BattleLog.append(defender.getName()+" ("+defender.getColor()+") gets killed.\nThe battle is over. :)\n");

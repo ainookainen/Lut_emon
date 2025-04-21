@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lutemon.RVAdapterTraining;
+import com.example.lutemon.databinding.FragmentTrainingBinding;
 import com.example.lutemon.lutemons.Lutemon;
 import com.example.lutemon.lutemons.LutemonStorage;
-import com.example.lutemon.databinding.FragmentTrainingBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +24,7 @@ public class Training extends Fragment {
     private RVAdapterTraining adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentTrainingBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }

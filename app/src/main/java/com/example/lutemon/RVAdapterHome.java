@@ -21,7 +21,7 @@ public class RVAdapterHome extends RecyclerView.Adapter<RVAdapterHome.ViewHolder
 
     public RVAdapterHome(HashMap<Integer, Lutemon> map) {
         this.map = map;
-        lutemons = new ArrayList<Lutemon>(map.values());
+        lutemons = new ArrayList<>(map.values());
     }
 
     /**

@@ -3,8 +3,8 @@ package com.example.lutemon.lutemons;
 import java.util.HashMap;
 
 public class LutemonStorage {
-    private static LutemonStorage instance;
-    private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
+    private static volatile LutemonStorage instance;
+    private final HashMap<Integer, Lutemon> lutemons = new HashMap<>();
     private int idCounter = 0;
 
     public static LutemonStorage getInstance() {
@@ -18,16 +18,11 @@ public class LutemonStorage {
         return instance;
     }
 
-
-    public Lutemon getLutemon(int id) {
-        return lutemons.get(id);
-    }
-
     public HashMap<Integer, Lutemon> getLutemons() {
         return lutemons;
     }
 
-    public Lutemon createLutemon(String name, String color) {
+    public void createLutemon(String name, String color) {
         int id = idCounter++;
         Lutemon lutemon;
         switch (color) {
@@ -50,10 +45,10 @@ public class LutemonStorage {
                 throw new IllegalArgumentException("Invalid Lutemon color");
         }
         lutemons.put(id, lutemon);
-        return lutemon;
     }
-    public void kill(Lutemon lutemon){
-        if (lutemon.getHealth()<=0){
+
+    public void kill(Lutemon lutemon) {
+        if (lutemon.getHealth() <= 0) {
             lutemons.remove(lutemon.getId());
         }
     }

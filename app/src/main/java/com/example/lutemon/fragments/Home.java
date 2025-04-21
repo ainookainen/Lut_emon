@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lutemon.R;
 import com.example.lutemon.RVAdapterHome;
+import com.example.lutemon.databinding.FragmentHomeBinding;
 import com.example.lutemon.lutemons.Lutemon;
 import com.example.lutemon.lutemons.LutemonStorage;
-import com.example.lutemon.databinding.FragmentHomeBinding;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -29,7 +29,7 @@ public class Home extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -40,9 +40,7 @@ public class Home extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         adapter = new RVAdapterHome(LutemonStorage.getInstance().getLutemons());
-        binding.CreateNewLutemon.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_home_to_createNewLutemon);
-        });
+        binding.CreateNewLutemon.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_home_to_createNewLutemon));
         HashMap<Integer, Lutemon> map = LutemonStorage.getInstance().getLutemons();
         adapter = new RVAdapterHome(map);
         binding.RVLutemons.setLayoutManager(new LinearLayoutManager(requireContext()));
