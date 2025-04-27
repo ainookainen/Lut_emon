@@ -46,7 +46,7 @@ public class Battle extends Fragment {
         binding.BattleButton.setOnClickListener(v -> {
             ArrayList<Lutemon> fighters = adapter.getFighters();
             if (fighters.size() == 2) {
-                Snackbar.make(view, "Ready to battle!", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(view, "Ready to battle! Be patient as your Lutemons battle it out.", Snackbar.LENGTH_SHORT).show();
                 viewModel.setFighters(fighters);
                 Navigation.findNavController(v).navigate(R.id.action_battle_to_battleField);
             } else {

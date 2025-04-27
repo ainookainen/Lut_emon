@@ -65,13 +65,19 @@
                 android:src="@drawable/space_invaders" />
         </LinearLayout>
     </LinearLayout>
-
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name of your Lutemon:"
+        android:textSize="17sp"/>
     <EditText
         android:id="@+id/LutemonName"
         android:layout_width="match_parent"
+        android:maxLength="30"
+        android:inputType="text"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Name of your Lutemon here"
+        android:hint="Max. 30 characters"
         android:textColorHint="@color/sea_green" />
     <Button
         android:id="@+id/CreateLutemonButton"
