@@ -1,7 +1,6 @@
 package com.example.lutemon.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,8 @@ import com.example.lutemon.BattleManager;
 import com.example.lutemon.R;
 import com.example.lutemon.databinding.FragmentBattleFieldBinding;
 import com.example.lutemon.lutemons.Lutemon;
-import com.example.lutemon.lutemons.LutemonStorage;
 
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
 
 public class BattleField extends Fragment {
     private FragmentBattleFieldBinding binding;
