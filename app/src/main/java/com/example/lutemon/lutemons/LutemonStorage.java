@@ -27,19 +27,19 @@ public class LutemonStorage {
         Lutemon lutemon;
         switch (color) {
             case "White":
-                lutemon = new White(id, name);
+                lutemon = new White(id, name, color);
                 break;
             case "Green":
-                lutemon = new Green(id, name);
+                lutemon = new Green(id, name, color);
                 break;
             case "Pink":
-                lutemon = new Pink(id, name);
+                lutemon = new Pink(id, name, color);
                 break;
             case "Orange":
-                lutemon = new Orange(id, name);
+                lutemon = new Orange(id, name, color);
                 break;
             case "Black":
-                lutemon = new Black(id, name);
+                lutemon = new Black(id, name, color);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid Lutemon color");

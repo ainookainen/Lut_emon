@@ -1,6 +1,6 @@
 package com.example.lutemon.lutemons;
 
-public abstract class Lutemon {
+public class Lutemon {
     private int id;
     private String name;
     private String color;

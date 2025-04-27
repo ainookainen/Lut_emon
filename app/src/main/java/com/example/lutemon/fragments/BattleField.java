@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.lutemon.BattleManager;
 import com.example.lutemon.R;
 import com.example.lutemon.databinding.FragmentBattleFieldBinding;
 import com.example.lutemon.lutemons.Lutemon;
@@ -23,10 +24,7 @@ import java.util.ArrayList;
 public class BattleField extends Fragment {
     private FragmentBattleFieldBinding binding;
     private BattleViewModel viewModel;
-    private final Handler handler = new Handler();
-    private ArrayList<Lutemon> selectFighters;
-    private int turnIndex = 0;
-    private int logNr = 1;
+    private BattleManager battleManager;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,44 +36,19 @@ public class BattleField extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(BattleViewModel.class);
+        battleManager = new BattleManager(this);
+
         viewModel.getFighters().observe(getViewLifecycleOwner(), fighters -> {
             if (fighters != null && fighters.size() == 2) {
-                selectFighters=fighters;
+                battleManager.setFighters(fighters);
                 binding.Fighter1Image.setImageResource(fighters.get(0).getImageId());
                 binding.Fighter2Image.setImageResource(fighters.get(1).getImageId());
-                battle();
+                battleManager.startBattle();
             }
         });
     }
 
-    public void battle() {
-        handler.postDelayed(this::battleTurn, 2000);
-    }
-
-    public void battleTurn() {
-        Lutemon attacker = selectFighters.get(turnIndex);
-        Lutemon defender = selectFighters.get(1 - turnIndex);
-        flipSword(turnIndex);
-        binding.BattleLog.append(logNr + ": " + attacker.getName() + " (" + attacker.getColor() + ") att: " + attacker.getAttack() + "; def: " +
-                attacker.getDefense() + "; exp: " + attacker.getExperience() + "; health: " + attacker.getHealth() + "/" + attacker.getMaxHealth() + "\n");
-        binding.BattleLog.append(3-logNr + ": " + defender.getName() + " (" + defender.getColor() + ") att: " + defender.getAttack() + "; def: " +
-                defender.getDefense() + "; exp: " + defender.getExperience() + "; health: " + defender.getHealth() + "/" + defender.getMaxHealth() + "\n");
-        defender.defendAgainst(attacker);
-        binding.BattleLog.append(attacker.getName() + " (" + attacker.getColor() + ") attacks " + defender.getName() + " (" + defender.getColor() + ")!\n");
-        if (defender.getHealth() <= 0) {
-            binding.BattleLog.append(defender.getName()+" ("+defender.getColor()+") gets killed.\nThe battle is over. :)\n");
-            LutemonStorage.getInstance().kill(defender);
-            attacker.heal();
-            attacker.train();
-        } else {
-            binding.BattleLog.append(defender.getName()+" ("+defender.getColor()+") manages to escape death.\n\n");
-            turnIndex = 1 - turnIndex;
-            logNr = 3 - logNr;
-            battle();
-        }
-    }
-
-    private void flipSword(int attackerIndex) {
+    public void flipSword(int attackerIndex) {
         ImageView sword = binding.SwordImage;
         sword.setRotation(20);
         sword.setImageResource(R.drawable.sword_pixel);
@@ -88,9 +61,29 @@ public class BattleField extends Fragment {
         }
     }
 
+    public void logBattle(Lutemon attacker, Lutemon defender, int logNr) {
+        binding.BattleLog.append(logNr + ": " + attacker.getName() + " (" + attacker.getColor() + ") att: " + attacker.getAttack() + "; def: " + attacker.getDefense() + "; exp: " + attacker.getExperience() + "; health: " + attacker.getHealth() + "/" + attacker.getMaxHealth() + "\n");
+        binding.BattleLog.append((3 - logNr) + ": " + defender.getName() + " (" + defender.getColor() + ") att: " + defender.getAttack() + "; def: " + defender.getDefense() + "; exp: " + defender.getExperience() + "; health: " + defender.getHealth() + "/" + defender.getMaxHealth() + "\n");
+    }
+
+    public void logAttack(Lutemon attacker, Lutemon defender) {
+        binding.BattleLog.append(attacker.getName() + " (" + attacker.getColor() + ") attacks " + defender.getName() + " (" + defender.getColor() + ")!\n");
+    }
+
+    public void logDefenderKilled(Lutemon defender) {
+        binding.BattleLog.append(defender.getName() + " (" + defender.getColor() + ") gets killed.\nThe battle is over. :)\n");
+    }
+
+    public void logDefenderSurvived(Lutemon defender) {
+        binding.BattleLog.append(defender.getName() + " (" + defender.getColor() + ") manages to escape death.\n\n");
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        handler.removeCallbacksAndMessages(null);
+        if (battleManager != null) {
+            battleManager.stopBattle();
+        }
     }
 }
+

@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import com.example.lutemon.R;
 import com.example.lutemon.databinding.FragmentCreateLutemonBinding;
 import com.example.lutemon.lutemons.LutemonStorage;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -73,15 +74,15 @@ public class CreateLutemon extends Fragment {
     private void createLutemon(View view) {
         String name = binding.LutemonName.getText().toString();
         if (name.isEmpty()) {
-            Toast.makeText(requireContext(), "Please enter a name for your Lutemon.", Toast.LENGTH_SHORT).show();
+            Snackbar.make(requireContext(), view, "Please enter a name for your Lutemon.", Snackbar.LENGTH_SHORT).show();
             return;
         }
         try {
             LutemonStorage.getInstance().createLutemon(name, color);
-            Toast.makeText(requireContext(), "Created " + color + " Lutemon: " + name, Toast.LENGTH_SHORT).show();
+            Snackbar.make(requireContext(), view, "Created " + color + " Lutemon: " + name, Snackbar.LENGTH_SHORT).show();
             Navigation.findNavController(view).navigateUp();
         } catch (Exception e) {
-            Toast.makeText(requireContext(), "Error creating your Lutemon. Please select a color and try again.", Toast.LENGTH_SHORT).show();
+            Snackbar.make(requireContext(), view, "Error creating your Lutemon. Please select a color and try again.", Snackbar.LENGTH_SHORT).show();
         }
     }
 }
