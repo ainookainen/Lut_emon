@@ -18,6 +18,7 @@ public class RVAdapterTraining extends RecyclerView.Adapter<RVAdapterTraining.Vi
     private HashMap<Integer, Lutemon> map;
     private ArrayList<Lutemon> lutemons;
     private Lutemon choice = null;
+    private int lastSelectedPosition = -1;
 
     public RVAdapterTraining(HashMap<Integer, Lutemon> map) {
         this.map = map;
@@ -33,41 +34,42 @@ public class RVAdapterTraining extends RecyclerView.Adapter<RVAdapterTraining.Vi
 
         public ViewHolder(View view) {
             super(view);
-            radioButton = (RadioButton) view.findViewById(R.id.LutemonRadioButton);
+            radioButton = view.findViewById(R.id.LutemonRadioButton);
         }
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.choice_row_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.choice_row_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         Lutemon lutemon = lutemons.get(position);
         RadioButton radioButton = viewHolder.getRadioButton();
         radioButton.setText(lutemon.getName() + " (" + lutemon.getColor() + ")");
-        radioButton.setChecked(lutemon.equals(choice));
-        viewHolder.radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                choice = lutemon;
-                notifyDataSetChanged();
+        radioButton.setChecked(position == lastSelectedPosition);
+        View.OnClickListener clickListener = v -> {
+            int adapterPosition = viewHolder.getAdapterPosition();
+            if (adapterPosition == RecyclerView.NO_POSITION) return;
+            int previousSelected = lastSelectedPosition;
+            lastSelectedPosition = adapterPosition;
+            choice = lutemons.get(adapterPosition);
+            if (previousSelected != -1) {
+                notifyItemChanged(previousSelected);
             }
-        });
+            notifyItemChanged(lastSelectedPosition);
+        };
+        radioButton.setOnClickListener(clickListener);
     }
 
     public Lutemon getChoice() {
         return choice;
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return lutemons.size();

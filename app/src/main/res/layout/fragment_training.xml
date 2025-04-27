@@ -3,37 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Training"
+    android:layout_marginHorizontal="20dp"
     android:orientation="vertical"
-    android:layout_marginHorizontal="20dp">
+    tools:context=".fragments.Training">
 
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@color/jonquil"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="5dp"
-        android:gravity="center_vertical"
         android:drawableLeft="@drawable/baseline_info_24"
         android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="5dp"
         android:text="Train your Lutemon! This will increase that Lutemons experience and offense." />
+
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
         android:text="Choose a Lutemon to train:"
-        android:layout_marginBottom="5dp"/>
+        android:textSize="16sp" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVTrainingChoice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
     <Button
         android:id="@+id/TrainingButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Train!"
-        android:layout_gravity="center"/>
+        android:layout_marginBottom="70dp"/>
 
 </LinearLayout>
